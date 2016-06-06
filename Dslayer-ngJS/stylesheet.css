@@ -27,7 +27,7 @@ body {
 /*	margin: 0px 5px 0px -10px;  */
 	padding: 10px;
 	
-	background-image: url("apps/resources/parchment_texture_1_by_mytherea.jpg");
+	background-image: url("resources/parchment_texture_1_by_mytherea.jpg");
 	background-repeat: no-repeat;
     background-position: left top;
 	background-size: cover;
