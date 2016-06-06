@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html ng-app="Dragonslayer" ng-cloak>
+<head>
+	<meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Dragonslayer - AngularJS</title>
+	
+	<!--  Bootstrap Core CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	
+	<!--  Custom CSS -->
+	<link rel="stylesheet" href="stylesheet.css">
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="apps/js/mainApp.js"></script>	
+	
+	<!-- Included when we wait to call AngularJS at the end of the document 
+	<style>
+		[ng\:cloak], [ng-cloak], .ng-cloak {display: none;}
+	</style> 
+	-->
+	
+</head>
+<body>
+	<!-- header -->
+	<nav class="navbar navbar-blue text-center"> 
+		<div class="container">
+			<div class="navbar-header">
+				<p>Hello! Welcome to <span id="dragonslayer">Dragonslayer</span>. This is a choose your own adventure. that will create a story as you play.</p>
+			</div>
+		</div>
+	</nav>
+	
+	<!-- main -->
+	<div class="container">				
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="panel panel-default left" id="getData" div ng-controller="start" >
+					<h5>{{showPanel}}</h5> 
+					<div ng-include src="showPanel"></div>
+				
+				</div>
+			</div>
+			
+			<div class="col-xs-8">
+				<div class="panel panel-default right" id="story">
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<!-- footer -->	
+	<nav class="navbar navbar-blue navbar-fixed-bottom text-center">
+		<div class="container">
+			<p class="navbar-centerText">Created by Chip Long</p>
+		</div>
+	</nav>
+	
+	<!-- Angular JS files -->	
+
+	<!-- Modules -->
+
+
+    <!-- Controllers --
+    <script src="apps/js/controllers/MainController.js"></script>
+
+    <!-- Services --
+    <script src="apps/js/services/forecast.js"></script>
+
+    <!-- Directives -->
+
+</body>
+</html> 
