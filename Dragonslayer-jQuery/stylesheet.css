@@ -1,0 +1,45 @@
+body {
+	margin-bottom: 80px;
+}
+
+.navbar-blue {
+	background-color: #c3f4eb;
+}
+
+#dragonslayer {
+	font-size: 2em;
+	font-family: Brush Script MT, sans-serif;
+	color: #ff0000;
+}
+
+.left {
+
+	background-color: #ebc3f4;
+	height: 100%; 
+/*	margin: 0px 0px 0px 5px;   /* How do I reduce the spaceing between the columns? */
+/*	margin-bottom: 10px; */
+	padding: 10px;
+}
+
+.right {
+
+/*	height: 400px; */
+/*	margin: 0px 5px 0px -10px;  */
+	padding: 10px;
+	
+	background-image: url("parchment_texture_1_by_mytherea.jpg");
+	background-repeat: no-repeat;
+    background-position: left top;
+	background-size: cover;
+	
+	background-color: #F4EBC3; 
+}
+
+.navbar-centerText {
+    text-align: center;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
