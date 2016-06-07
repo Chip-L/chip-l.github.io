@@ -637,7 +637,7 @@ var turnEnd = function(playerObj, answer) {
 			};
 			break;
 		case "pay":
-			if((playerObj.wealth > "8000") || (playerObj.charisma > 15)) {
+			if((playerObj.wealth > 8000) || (playerObj.charisma > 15)) {
 				resultTxt += playerObj.name + " survived, but is now broke.";
 				playerObj.wealth = 0;
 			} else if (playerObj.intelligence > 16) {
