@@ -6,7 +6,7 @@ body {
 	background-color: #c3f4eb;
 }
 
-#dragonslayer {
+.dragonslayer {
 	font-size: 2em;
 	font-family: Brush Script MT, sans-serif;
 	color: #ff0000;
@@ -47,3 +47,6 @@ body {
 	margin-top: -10px;
 }
 
+.end {
+	margin-top: 20px;
+}
