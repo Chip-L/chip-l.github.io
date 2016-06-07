@@ -43,10 +43,8 @@ body {
     margin-bottom: 15px;
 }
 
-angularJSLogo {
-    max-height: 80%;
-    max-width: 80%;
-/*	float: right; */
-/*	margin: 10px 10px 0px 0px; */
+.navbar-blue img {
+	margin-top: -10px;
 }
+
 
