@@ -18,171 +18,170 @@ function characterObj() {
 	this.intelligence = getStat();
 	this.charisma = getStat();
 	this.wealth = Math.floor((Math.random()*1000000) + 1);
+	this.battlesSurvived = 0;
 	
 // 	Private functions
 
-	
+}	
 //	Public functions
-	this.getPronoun = function () {
-		return (this.sex === "Male") ? "he" : "she";
-	};
+characterObj.prototype.getPronoun = function () {
+	return (this.sex === "Male") ? "he" : "she";
+};
 	
-	this.getStrengthDesc = function () {
-		var thisStat = this.strength;
-				
-		if(thisStat >= 18) {
-			return 'super strong';
-		} else if(thisStat >= 16) {
-			return 'very strong';
-		} else if(thisStat >= 13) {
-			return 'stronger than average';
-		} else if(thisStat >= 9) {
-			return 'strong';
-		} else if(thisStat >= 7) {
-			return 'weaker than average';
-		} else if(thisStat >= 5) {
-			return 'very weak';
-		} else {
-			return 'super weak';
-		}
-		
-		return "error: getStrengthDesc couldn't create description"
-	};
+characterObj.prototype.getStrengthDesc = function () {
+	var thisStat = this.strength;
+			
+	if(thisStat >= 18) {
+		return 'super strong';
+	} else if(thisStat >= 16) {
+		return 'very strong';
+	} else if(thisStat >= 13) {
+		return 'stronger than average';
+	} else if(thisStat >= 9) {
+		return 'strong';
+	} else if(thisStat >= 7) {
+		return 'weaker than average';
+	} else if(thisStat >= 5) {
+		return 'very weak';
+	} else {
+		return 'super weak';
+	}
 	
-	this.getConstitutionDesc = function () {
-		var thisStat = this.constitution;
-		
-		if(thisStat >= 18) {
-			return 'super hardy';
-		} else if(thisStat >= 16) {
-			return 'very hardy';
-		} else if(thisStat >= 13) {
-			return 'hardier than average';
-		} else if(thisStat >= 9) {
-			return 'hardy';
-		} else if(thisStat >= 7) {
-			return 'feelbler than average';
-		} else if(thisStat >= 5) {
-			return 'very feeble';
-		} else {
-			return 'super feeble';
-		}
-		
-		return "error: getConstitutionDesc couldn't create description"
-	};
+	return "error: getStrengthDesc couldn't create description"
+};
+
+characterObj.prototype.getConstitutionDesc = function () {
+	var thisStat = this.constitution;
 	
-	this.getDexterityDesc = function () {
-		var thisStat = this.dexterity;
-		
-		if(thisStat >= 18) {
-			return 'super agile';
-		} else if(thisStat >= 16) {
-			return 'very agile';
-		} else if(thisStat >= 13) {
-			return 'agiler than average';
-		} else if(thisStat >= 9) {
-			return 'agile';
-		} else if(thisStat >= 7) {
-			return 'clumsier than average';
-		} else if(thisStat >= 5) {
-			return 'very clumsy';
-		} else {
-			return 'super clumsy';
-		}
-		
-		return "error: getDexterityDesc couldn't create description"
-	};
+	if(thisStat >= 18) {
+		return 'super hardy';
+	} else if(thisStat >= 16) {
+		return 'very hardy';
+	} else if(thisStat >= 13) {
+		return 'hardier than average';
+	} else if(thisStat >= 9) {
+		return 'hardy';
+	} else if(thisStat >= 7) {
+		return 'feelbler than average';
+	} else if(thisStat >= 5) {
+		return 'very feeble';
+	} else {
+		return 'super feeble';
+	}
 	
-	this.getWisdomDesc = function () {
-		var thisStat = this.wisdom;
-		
-		if(thisStat >= 18) {
-			return 'super wise';
-		} else if(thisStat >= 16) {
-			return 'very wise';
-		} else if(thisStat >= 13) {
-			return 'wiser than average';
-		} else if(thisStat >= 9) {
-			return 'wise';
-		} else if(thisStat >= 7) {
-			return 'less wise than average';
-		} else if(thisStat >= 5) {
-			return 'very unwise';
-		} else {
-			return 'super unwise';
-		}
-		
-		return "error: getWisdomDesc couldn't create description"
-	};
+	return "error: getConstitutionDesc couldn't create description"
+};
+
+characterObj.prototype.getDexterityDesc = function () {
+	var thisStat = this.dexterity;
 	
-	this.getIntelligenceDesc = function () {
-		var thisStat = this.intelligence;
-		
-		if(thisStat >= 18) {
-			return 'super intelligent';
-		} else if(thisStat >= 16) {
-			return 'very intelligent';
-		} else if(thisStat >= 13) {
-			return 'more intelligent than average';
-		} else if(thisStat >= 9) {
-			return 'intelligent';
-		} else if(thisStat >= 7) {
-			return 'less intelligent than average';
-		} else if(thisStat >= 5) {
-			return 'very unintelligent';
-		} else {
-			return 'super unintelligent';
-		}
-		
-		return "error: getIntelligenceDesc couldn't create description"
-	};
-		
-	this.getCharismaDesc = function () {
-		var thisStat = this.charisma;
-		var adj = (this.sex === 'Male') ? 'handsome' : 'beautiful';
-		
-		if(thisStat >= 18) {
-			return 'super ' + adj;
-		} else if(thisStat >= 16) {
-			return 'very ' + adj;
-		} else if(thisStat >= 13) {
-			return 'more ' + adj + ' than average';
-		} else if(thisStat >= 9) {
-			return adj;
-		} else if(thisStat >= 7) {
-			return 'less ' + adj + ' than average';
-		} else if(thisStat >= 5) {
-			return 'very plain';
-		} else {
-			return 'super plain';
-		}
-		
-		return "error: getCharismaDesc couldn't create description"
-	};
+	if(thisStat >= 18) {
+		return 'super agile';
+	} else if(thisStat >= 16) {
+		return 'very agile';
+	} else if(thisStat >= 13) {
+		return 'agiler than average';
+	} else if(thisStat >= 9) {
+		return 'agile';
+	} else if(thisStat >= 7) {
+		return 'clumsier than average';
+	} else if(thisStat >= 5) {
+		return 'very clumsy';
+	} else {
+		return 'super clumsy';
+	}
 	
-	this.getWealthDesc = function () {
-		var thisStat = this.wealth;
-		
-		if(thisStat >= 1000000) {
-			return 'flithy rich';
-		} else if(thisStat >= 100000) {
-			return 'very rich';
-		} else if(thisStat >= 10000) {
-			return 'richer than most';
-		} else if(thisStat >= 1000) {
-			return 'rich';
-		} else if(thisStat >= 100) {
-			return 'less rich than most';
-		} else if(thisStat > 0) {
-			return 'very poor';
-		} else {
-			return 'broke';
-		}
-		
-		return "error: getWealthDesc couldn't create description"
-	};
-		
-}
+	return "error: getDexterityDesc couldn't create description"
+};
+
+characterObj.prototype.getWisdomDesc = function () {
+	var thisStat = this.wisdom;
+	
+	if(thisStat >= 18) {
+		return 'super wise';
+	} else if(thisStat >= 16) {
+		return 'very wise';
+	} else if(thisStat >= 13) {
+		return 'wiser than average';
+	} else if(thisStat >= 9) {
+		return 'wise';
+	} else if(thisStat >= 7) {
+		return 'less wise than average';
+	} else if(thisStat >= 5) {
+		return 'very unwise';
+	} else {
+		return 'super unwise';
+	}
+	
+	return "error: getWisdomDesc couldn't create description"
+};
+
+characterObj.prototype.getIntelligenceDesc = function () {
+	var thisStat = this.intelligence;
+	
+	if(thisStat >= 18) {
+		return 'super intelligent';
+	} else if(thisStat >= 16) {
+		return 'very intelligent';
+	} else if(thisStat >= 13) {
+		return 'more intelligent than average';
+	} else if(thisStat >= 9) {
+		return 'intelligent';
+	} else if(thisStat >= 7) {
+		return 'less intelligent than average';
+	} else if(thisStat >= 5) {
+		return 'very unintelligent';
+	} else {
+		return 'super unintelligent';
+	}
+	
+	return "error: getIntelligenceDesc couldn't create description"
+};
+	
+characterObj.prototype.getCharismaDesc = function () {
+	var thisStat = this.charisma;
+	var adj = (this.sex === 'Male') ? 'handsome' : 'beautiful';
+	
+	if(thisStat >= 18) {
+		return 'super ' + adj;
+	} else if(thisStat >= 16) {
+		return 'very ' + adj;
+	} else if(thisStat >= 13) {
+		return 'more ' + adj + ' than average';
+	} else if(thisStat >= 9) {
+		return adj;
+	} else if(thisStat >= 7) {
+		return 'less ' + adj + ' than average';
+	} else if(thisStat >= 5) {
+		return 'very plain';
+	} else {
+		return 'super plain';
+	}
+	
+	return "error: getCharismaDesc couldn't create description"
+};
+
+characterObj.prototype.getWealthDesc = function () {
+	var thisStat = this.wealth;
+	
+	if(thisStat >= 1000000) {
+		return 'flithy rich';
+	} else if(thisStat >= 100000) {
+		return 'very rich';
+	} else if(thisStat >= 10000) {
+		return 'richer than most';
+	} else if(thisStat >= 1000) {
+		return 'rich';
+	} else if(thisStat >= 100) {
+		return 'less rich than most';
+	} else if(thisStat > 0) {
+		return 'very poor';
+	} else {
+		return 'broke';
+	}
+	
+	return "error: getWealthDesc couldn't create description"
+};
 
 /********************************** getStat ***********************************/
 var getStat = function() {
@@ -194,6 +193,7 @@ var getStat = function() {
 	return value;
 };
 
+/****************************** Create Character ******************************/
 /***************************** allFilled (event) ******************************/
 var allFilled = function() {
 /* this is to verify that all of the INPUT fields are filled   
@@ -233,11 +233,22 @@ var btnGetChar = function(playerObj) {
 	var key;
 	var thisValue = "";
 	var postText = "";
-//	var firstWord = "";
+
+	// Not knowing what other properties might be added to the object, only check for the ones needed
+	var statArray = [
+		'name',
+		'sex',
+		'strength',
+		'constitution',
+		'dexterity',
+		'wisdom',
+		'intelligence',
+		'charisma',
+		'wealth'];
 	
 	// populate player 
 	for (key in playerObj) {
-		if(typeof playerObj[key] != 'function') {
+		if($.inArray(key, statArray) > -1) { 
 			thisValue = $('#get' + key.toProperCase()).val();
 			if (typeof thisValue === 'string') {
 				thisValue = thisValue.toProperCase();
@@ -249,7 +260,15 @@ var btnGetChar = function(playerObj) {
 		}
 	}
 	
+	// create the title!
+	postText += playerObj.name + ' the Dragonslayer!';
+	$('<h1>').appendTo('#story')
+		.attr('id', 'storyTitle')
+		.addClass('dragonslayer')
+		.text(postText);
+		
 	// create story text
+	postText = "";
 	postText += 'There was once a hero named ' + playerObj.name + '. ';
 	postText += playerObj.getPronoun().toProperCase() + ' was ';
 	postText += playerObj.getStrengthDesc() + ', ';
@@ -264,7 +283,7 @@ var btnGetChar = function(playerObj) {
 	$('<p>').text(postText).appendTo('#story');  
 	
 	// call the adventure!
-//	getCharAttributes(player);
+	turnBegin(playerObj);
 }
 
 /******************************** addCharName *********************************/
@@ -490,11 +509,10 @@ var addCharWealth = function(attrName, playerObj) {
 /***************************** setCharAttributes ******************************/
 var setCharAttributes = function(player) {
 	var instructions = "Set the attributes of your character:";
-	var idList = '';	// list of ids that get keyup bound to them
 	var key="";
 
-	//clear the existing fields 
-	$("#getData").empty();
+	clearFields('#getData'); //form fields
+	clearFields('#story'); //form fields
 	
 	//Add the new fields and properties
 	$('<p>').text(instructions).appendTo('#getData');
@@ -547,13 +565,159 @@ var setCharAttributes = function(player) {
 	
 }
 
+/************************************ game ************************************/
+/********************* printOptions (player, arrOptions) **********************/
+var printOptions = function(playerObj, arrOptions) {
+	var opt = "";
+	
+	if(arrOptions.length <= 0) {
+		$('<p>').text("you have no options!").appendTo('#getData');
+		return;
+	} 
+	
+	$('<div>').appendTo('#getData')
+		.attr('id', 'actionChoices')
+		.addClass('btn-group-vertical');
+	
+	for(opt in arrOptions) {
+		$('<button>').appendTo('#actionChoices')
+			.attr('id', arrOptions[opt])
+			.text(arrOptions[opt])
+			.addClass('btn')
+			.addClass('btn-primary')
+			.addClass('center-block')
+			.click(function(event) { 
+				var action = this.innerHTML;
+				
+				turnEnd(playerObj, action); 
+			});
+	}
+	
+	$('<button>').appendTo('#getData')
+		.attr('id', 'End')
+		.text('End Story')
+		.addClass('btn')
+		.addClass('btn-info')
+		.addClass('pull-right')
+		.addClass('end')
+		.click(function(event) { 
+			var action = "End";
+			
+			turnEnd(playerObj, action); 
+		});
+}
+
+/***************************** turnBegin (player) *****************************/
+var turnBegin = function(playerObj) {
+	var answer = ""
+	
+	clearFields('#getData');
+	
+	//Add the new fields and properties
+	$('<p>').appendTo('#getData')
+		.text("Well, " + playerObj.name + ", you see a dragon. What do you do?");
+	
+	printOptions(playerObj, ['Fight', 'Pay', 'Run']);
+}
+
+/************************* turnEnd (player, action); **************************/
+var turnEnd = function(playerObj, answer) {
+	isAlive = true;
+	resultTxt = "";
+	
+	action = answer.toLowerCase();
+	
+	switch(action) {
+		case "fight":
+			if(playerObj.strength > 15) {
+				resultTxt += playerObj.name + " is strong and wins the fight!";
+			} else {
+				resultTxt += playerObj.name + " learns weaklings shouldn't fight!";
+				isAlive = false;
+			};
+			break;
+		case "pay":
+			if((playerObj.wealth > "8000") || (playerObj.charisma > 15)) {
+				resultTxt += playerObj.name + " survived, but is now broke.";
+				playerObj.wealth = 0;
+			} else if (playerObj.intelligence > 16) {
+				resultTxt += playerObj.name + " should have been smart enough to run!";
+				isAlive = false;
+			}/* else if (prompt("You can't afford it. Do you accept indentured servitude to pay off your debt? (y/n)").toLowerCase() === "y") {
+				console.log("You work hard the rest of your life to pay off your debt.")
+				console.log("It turns out it was a short life because the dragon ate you anyways.")
+			} */
+			else {
+				confirm("You can't afford that, make another choice.");
+				$('#' + answer).prop('disabled', 'true');
+				return; // exit this before restarting the story
+			}
+			break;
+		case "run":
+			if((playerObj.strength > 15) && (playerObj.dexterity > 15)) {
+				resultTxt += (playerObj.name + " manges to escape.");
+			} else{
+				resultTxt += "The dragon catches " + playerObj.name + 
+					" and eats ";
+				resultTxt += (playerObj.sex === "Male") ? "him." : "her.";
+				isAlive = false;
+			}			
+			break;
+		case "end":
+			isAlive = false;
+			break;
+		default:
+			confirm ("Something unexpected happened");
+			return;
+	}
+	
+	if(action !== 'end') {
+		$('<p>').appendTo('#story')
+			.text(resultTxt);	
+	}
+			
+	if(isAlive) {
+		playerObj.battlesSurvived++;
+		turnBegin(playerObj);
+	} else {
+		gameEnd(playerObj);
+	}
+	
+}
+
+/****************************** gameEnd(player) *******************************/
+var gameEnd = function(playerObj) {
+	var finalTxt = "";
+	var wins = playerObj.battlesSurvived;
+	var pronoun = playerObj.getPronoun();
+	
+	if(wins === 0) {
+		finalTxt += ('Unfortunately ' + playerObj.name + ' died without winning \
+			a single battle. ' + pronoun.toProperCase() + ' fame did not extend \
+			beyond ' + pronoun + ' family.');
+	} else if (wins < 4) {
+		finalTxt += (playerObj.name + ' won ' + wins + ' battles. \
+			' + pronoun.toProperCase() + ' fame will extend to the local \
+			village!');
+	} else {
+		finalTxt += (playerObj.name + ' won ' + wins + ' battles!!! \
+			' + pronoun.toProperCase() + ' fame will extend to the whole \
+			world and be celebrated for all times!');
+	}
+		
+	$('<p>').appendTo('#story')
+		.text(finalTxt)
+		.addClass('end');
+	
+	//start over
+	main();
+}
+
 /************************************ main ************************************/
 var main = function() {
-	String.prototype.toProperCase = function () {
-		return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-	}
-
 	var player = new characterObj();
+	
+	clearFields('#getData');
 	
 	$('<p>').appendTo('#getData')
 		.text("Are  you ready to begin?");
@@ -563,38 +727,18 @@ var main = function() {
 		.addClass('center-block')
 		.text('Start')
 		.click(function () { setCharAttributes(player) });
-	
-/*	
-	var answer = prompt("Well, " + user + ", you see a dragon. What do you do, (fight, pay, run)?", "run").toLowerCase();
+}
 
-	switch(answer) {
-		case "fight":
-			if(strength >15) {
-				console.log("You're strong. You win!");
-			} else {
-				console.log("Weaklings shouldn't fight!");
-			};
-			break;
-		case "pay":
-			if((wealth >"800") || (charisma < 15)) {
-				console.log("You survive, but are now broke.");
-				wealth = 0;
-			} else if (intelligence > 16) {
-				console.log("You should have been smart enough to run!");
-			} else if (prompt("You can't afford it. Do you accept indentured servitude to pay off your debt? (y/n)").toLowerCase() === "y") {
-				console.log("You work hard the rest of your life to pay off your debt.")
-				console.log("It turns out it was a short life because the dragon ate you anyways.")
-			} else {
-				console.log("You died");
-			}
-			break;
-		case "run":
-			break;
-		default:
-			console.log(answer + " was not an option");
-	}
-*/
-//	confirm("done");
+
+/********************************* Utilities **********************************/
+String.prototype.toProperCase = function () {
+	return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+/******************************** clearFields *********************************/
+var clearFields = function(divID) {
+	//clear the existing fields 
+	$(divID).empty();	
 }
 
 /* called upon load */
