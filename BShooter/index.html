@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="utf8">
+		<title>Bubble Shooter</title>
+		
+		<link href="styles/main.css" rel="stylesheet">
+		<link href="styles/game.css" rel="stylesheet">
+				
+		<script src="scripts/modernizr.js"></script>
+		<script src="scripts/modernizr-custom.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script>
+			if(!window.jQuery) {
+				document.write('<script src="scripts/jquery-3.0.0.min.js"><\/script>')
+			};
+			if(Modernizr.canvas) {
+				document.write('<script src="scripts/renderer.js"><\/script>');
+				document.write('<script src="scripts/sprite.js"><\/script>');
+			};
+		</script>
+		<script src="scripts/jquery.kaboom.js"></script>
+		<script src="scripts/ui.js"></script>
+		<script src="scripts/bubble.js"></script>
+		<script src="scripts/board.js"></script>
+		<script src="scripts/collisionDetctor.js"></script>
+		<script src="scripts/game.js"></script>
+		<script src="scripts/sounds.js"></script>
+		
+	</head>
+	<body>
+		<div id="page">
+			<div id="top_bar">
+				<div id="top_level_box" class="top_bar_box">
+					<div id="top_level_label">Level: </div>
+					<div id="level">1</div>
+				</div>
+				<div id="top_score_box" class="top_bar_box">
+					<div id="top_score_label">Score: </div>
+					<div id="score">0</div>
+				</div>
+				<div id="top_high_score_box" class="top_bar_box">
+					<div id="top_score_label">High Score: </div>
+					<div id="high_score">0</div>
+				</div>
+			</div>
+			<div id="game">
+				<div id="board"></div>
+				<div id="bubbles_remaining"></div>
+			</div>
+			<div id="footer_bar"></div>
+			
+			<!-- dialogs -->
+			<div id="start_game" class="dialog">
+				<div id="start_game_message">
+					<h2>Start a new game</h2>
+				</div>
+				<div class="btn_start_game button">
+					New Game
+				</div>
+			</div>
+			<div id="end_game" class="dialog">
+				<div id="end_game_message">
+					<h2 class="level_failed">Game Over</h2>
+					<div id="level_failed" class="level_failed">Level failed!</div>
+					<div id="level_complete" class="level_complete">Level Complete!</div>
+					<div id="final_score">
+						<span>Final Score: </span>
+						<span id="final_score_value"></span>
+					</div>
+					<div id="new_high_score">New High Score!</div>
+				</div>
+				<div class="btn_start_game button">
+					<span class ="level_complete">Next Level</span>
+					<span class="level_failed">New Game</span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
