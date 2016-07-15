@@ -67,7 +67,7 @@ BubbleShoot.Game = (function($) {
 			
 			var top = CUR_TOP;
 			var left = ($("#board").width() - BubbleShoot.ui.BUBBLE_DIMS)/2;
-			bubble.getSprite().css({
+			curBubble.getSprite().css({
 				top: top,
 				left: left
 			});
