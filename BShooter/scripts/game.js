@@ -41,9 +41,9 @@ BubbleShoot.Game = (function($) {
 			board = new BubbleShoot.Board();
 			bubbles = board.getBubbles();
 			
-			 nextBubble = getNextBubble();
+			 nxtBubble = getNextBubble();
 			 switchToCurBubble();
-			 nextBubble = getNextBubble();
+			 nxtBubble = getNextBubble();
 			
 			if (BubbleShoot.Renderer) {
 				if (!requestAnimationID) {
