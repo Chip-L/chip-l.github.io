@@ -13,6 +13,8 @@ BubbleShoot.Game = (function($) {
 		var MAX_BUBBLES = 70;
 		var POINTS_PER_BUBBLE = 50;
 		var MAX_ROWS = 11;
+		var CUR_TOP = 470;
+		var CUR_LEFT = 410;
 		var level = 0;
 		var score = 0;
 		var highScore = 0;
@@ -62,6 +64,13 @@ BubbleShoot.Game = (function($) {
 			curBubble = nxtBubble;
 			curBubble.getSprite().addClass("cur_bubble");
 			curBubble.getSprite().removeClass("next_bubble");
+			
+			var top = CUR_TOP;
+			var left = ($("#board").width() - BubbleShoot.ui.BUBBLE_DIMS)/2;
+			bubble.getSprite().css({
+				top: top,
+				left: left
+			});
 		};
 		
 		// set up the next bubble to be fired
@@ -72,8 +81,8 @@ BubbleShoot.Game = (function($) {
 			bubble.setState(BubbleShoot.BubbleState.CURRENT);
 			bubble.getSprite().addClass("next_bubble");
 			
-			var top = 470;
-			var left = ($("#board").width() - BubbleShoot.ui.BUBBLE_DIMS)/2;
+			var top = CUR_TOP + BubbleShoot.ui.BUBBLE_DIMS + 10;
+			var left = (($("#board").width() - BubbleShoot.ui.BUBBLE_DIMS)/2) + BubbleShoot.ui.BUBBLE_DIMS + 10;
 			bubble.getSprite().css({
 				top: top,
 				left: left
