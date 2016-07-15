@@ -81,7 +81,7 @@ BubbleShoot.Game = (function($) {
 			bubble.setState(BubbleShoot.BubbleState.CURRENT);
 			bubble.getSprite().addClass("next_bubble");
 			
-			var top = CUR_TOP + BubbleShoot.ui.BUBBLE_DIMS + 10;
+			var top = CUR_TOP + 10;
 			var left = (($("#board").width() - BubbleShoot.ui.BUBBLE_DIMS)/2) + BubbleShoot.ui.BUBBLE_DIMS + 10;
 			bubble.getSprite().css({
 				top: top,
