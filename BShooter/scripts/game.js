@@ -5,10 +5,11 @@ var BubbleShoot = window.BubbleShoot || {};
 
 BubbleShoot.Game = (function($) {
 	var Game = function() {
-		var curBubble;
-		var board;
-		var numBubbles;
-		var bubbles = [];
+		var curBubble;  	// bubble waiting to be fired
+		var nxtBubble;		// next bubble to fire
+		var board;		// the board
+		var numBubbles;		// how many bubbles there are to be fired
+		var bubbles = [];	// bubblesd waiting to be popped
 		var MAX_BUBBLES = 70;
 		var POINTS_PER_BUBBLE = 50;
 		var MAX_ROWS = 11;
@@ -40,7 +41,9 @@ BubbleShoot.Game = (function($) {
 			board = new BubbleShoot.Board();
 			bubbles = board.getBubbles();
 			
-			curBubble = getNextBubble();
+			 nextBubble = getNextBubble();
+			 switchToCurBubble();
+			 nextBubble = getNextBubble();
 			
 			if (BubbleShoot.Renderer) {
 				if (!requestAnimationID) {
@@ -54,6 +57,12 @@ BubbleShoot.Game = (function($) {
 			BubbleShoot.ui.drawScore(score);
 			BubbleShoot.ui.drawLevel(level);
 		};
+		//
+		var switchToCurBubble = function() {
+			curBubble = nxtBubble;
+			curBubble.getSprite().addClass("cur_bubble");
+			curBubble.getSprite().removeClass("next_bubble");
+		};
 		
 		// set up the next bubble to be fired
 		var getNextBubble = function() {
@@ -61,7 +70,7 @@ BubbleShoot.Game = (function($) {
 			
 			bubbles.push(bubble);
 			bubble.setState(BubbleShoot.BubbleState.CURRENT);
-			bubble.getSprite().addClass("cur_bubble");
+			bubble.getSprite().addClass("next_bubble");
 			
 			var top = 470;
 			var left = ($("#board").width() - BubbleShoot.ui.BUBBLE_DIMS)/2;
@@ -134,7 +143,9 @@ BubbleShoot.Game = (function($) {
 			} else if (board.isEmpty()) {
 				endGame(true);
 			} else {
-				curBubble = getNextBubble(board);
+				switchToCurBubble();
+				nxtBubble = getNextBubble();
+				//curBubble = getNextBubble(board); - this is how it was written, but getNextBubble doesn't take a parameter?
 			};
 		};
 		
