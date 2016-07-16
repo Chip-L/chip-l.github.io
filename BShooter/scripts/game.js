@@ -82,7 +82,7 @@ BubbleShoot.Game = (function($) {
 			bubble.getSprite().addClass("next_bubble");
 			
 			var top = CUR_TOP + 10;
-			var left = (($("#board").width() - BubbleShoot.ui.BUBBLE_DIMS)/2) + BubbleShoot.ui.BUBBLE_DIMS + 10;
+			var left = (($("#board").width() - BubbleShoot.ui.BUBBLE_DIMS)/2) + BubbleShoot.ui.BUBBLE_DIMS + 30;
 			bubble.getSprite().css({
 				top: top,
 				left: left
@@ -153,7 +153,7 @@ BubbleShoot.Game = (function($) {
 				endGame(true);
 			} else {
 				switchToCurBubble();
-				if (numBubbles > 1) {
+				if (numBubbles >= 1) {
 					nxtBubble = getNextBubble();
 				};
 			};
