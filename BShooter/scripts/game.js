@@ -153,8 +153,9 @@ BubbleShoot.Game = (function($) {
 				endGame(true);
 			} else {
 				switchToCurBubble();
-				nxtBubble = getNextBubble();
-				//curBubble = getNextBubble(board); - this is how it was written, but getNextBubble doesn't take a parameter?
+				if (numBubbles > 1) {
+					nxtBubble = getNextBubble();
+				};
 			};
 		};
 		
