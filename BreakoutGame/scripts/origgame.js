@@ -5,16 +5,75 @@ var myGameBall;
 var myObstacles = [];
 var myScore;
 var myScoreValue = 0;
-var WIDTH = 480;
-var HEIGHT = 270;
+var gameOn = false;
+var WIDTH = 640;
+var HEIGHT = 480;
 
-$(function startGame() {
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+		this.canvas.width = WIDTH;
+        this.canvas.height = HEIGHT;
+        this.context = this.canvas.getContext("2d");
+        $("#gameBoard").append(this.canvas);
+		
+        this.frameNo = 0;
+		this.interval = setInterval(updateGameArea, 20); // 20ms = 50fps
+		
+		// set up event listeners ON THE WINDOW (not an object)
+		// these are for the dialog
+		window.addEventListener('mousedown', function (e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
+        })
+        window.addEventListener('mouseup', function (e) {
+            myGameArea.x = false;
+            myGameArea.y = false;
+        })
+        window.addEventListener('touchstart', function (e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
+        })
+        window.addEventListener('touchend', function (e) {
+            myGameArea.x = false;
+            myGameArea.y = false;
+        })
+		// these are for the game
+		window.addEventListener('mousemove', function (e) { // follows mouse movement
+			myGameArea.x = e.pageX; // only horizontal, get x only
+		})
+		window.addEventListener('touchmove', function (e) { // follows touch movement
+			myGameArea.x = e.pageX; // only horizontal, get x only
+		})
+		window.addEventListener('keydown', function (e) { // keyboard moves key down moves, key up stops movement
+			myGameArea.key = e.keyCode;
+		})
+		window.addEventListener('keyup', function (e) {
+			myGameArea.key = false;
+		})
+	},
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop : function() {
+        clearInterval(this.interval);
+    }
+}
+
+$(function init() {
     myGameArea.start();
+	gameOn = false;
+	msgDialog = new dialog("Start Game", ["click start to begin"], "Start");
+	
+	//startGame();
+})
+
+function startGame() {
 	myScore = new component("30px", "Consolas", "black", 280, 40, 0, "text");
     myGamePiece = new component(140, 10, "red", 170, 250, 0, "brick");
 	
 	myGameBall = new component(10, 10, "blue", 150, 235, 0, "ball");
-	myGameBall.speedX = 1;	// + = right; - = left
+	myGameBall.speedX = -1;	// + = right; - = left
 	myGameBall.speedY = -1;	// + = down; - = up
 	
 	myObstacles.push(myGamePiece);
@@ -28,38 +87,83 @@ $(function startGame() {
 		showTestData_GamePiece = new component("15px", "Ariel", "black", 360, 180, 0, "text");		
 		showTestData_GameBall = new component("15px", "Ariel", "black", 360, 200, 0, "text");
 	}
-})
+}
 
-var myGameArea = {
-    canvas : document.createElement("canvas"),
-    start : function() {
-        this.canvas.width = WIDTH;
-        this.canvas.height = HEIGHT;
-        this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-        this.frameNo = 0;
-		this.interval = setInterval(updateGameArea, 20); // 20ms = 50fps
-			
-		// set up event listeners ON THE WINDOW (not an object)
-		window.addEventListener('mousemove', function (e) { // follows mouse movement
-			myGameArea.x = e.pageX; // only horizontal, get x only
-		})
-		window.addEventListener('touchmove', function (e) { // follows touch movement
-			myGameArea.x = e.pageX; // only horizontal, get x only
-		})
-		window.addEventListener('keydown', function (e) { // keyboard moves key down moves, key up stops movement
-			myGameArea.key = e.keyCode;
-		})
-		window.addEventListener('keyup', function (e) {
-			myGameArea.key = false;
-		})
-    },
-    clear : function() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    },
-    stop : function() {
-        clearInterval(this.interval);
+function dialog(headerText, bodyText, btnText) {
+	this.headerText = headerText;
+	this.bodyText = bodyText;
+	this.btnText = btnText;
+	var bodyTextLines = bodyText.length;
+	
+	//set properties for the background
+	var backgroundWidth = WIDTH / 3;
+    var backgroundHeight = 2 * HEIGHT / 3;
+	var backgroundColor = "blue";
+	var backgroundX = WIDTH / 3;
+	var backgroundY = (HEIGHT / 3) / 2;
+	
+	// set properties for the text (no word wrap!)
+	// Note: because the text is centered, the "x" will be the center of the text, "y" will be the line that the text is written on (think of a line in notebook - "y" will hang below the line)
+	var border = 10;
+	var textWidth = backgroundWidth - (2 * border);
+	var textHeight = (backgroundHeight - (2 * border)) / 3;
+	var headerX = backgroundX + (backgroundWidth / 2); 
+	var headerY = backgroundY + border + (textHeight / 2) + (30 / 2); 
+	var bodyX = backgroundX + (backgroundWidth / 2);
+	var bodyY = backgroundY + border + textHeight + 15;
+	
+	// set properties for the button
+	var btnColor = "red"
+	var btnWidth = (backgroundWidth - (2 * border)) * 2/3;
+	var btnHeight = (30 * 1.5) + 10; // this fontsize * 1.5 (actual text area) + a 5 px border on top and bottom
+	var btnX = backgroundX + ((backgroundWidth / 2) - (btnWidth / 2)); // centers the button in the area
+	var btnY = backgroundY + backgroundHeight - border - (textHeight / 2) - (btnHeight / 2); // works from bottom up to center the button in the last 1/3 of the dialog
+	
+	// set properties for btn text
+	var btnTextColor = "white";
+	var btnTextX = btnX + (btnWidth / 2);
+	var btnTextY = btnY + 5 + 30; // buffer + text height
+	
+	this.update = function() {
+		// draw the background 
+		ctx = myGameArea.context;
+		ctx.fillStyle = backgroundColor;
+		ctx.fillRect(backgroundX, backgroundY, backgroundWidth, backgroundHeight);
+		
+		// draw the header text
+		ctx.fillStyle = "White"
+		ctx.font = "30px Consolas";
+		ctx.textAlign = "center";
+		ctx.fillText(this.headerText, headerX, headerY);
+		
+		//draw the body text
+		for (var i = 0; i < bodyText.length; i++) {
+			ctx.font = "15px Consolas";
+			ctx.fillText(this.bodyText[i], bodyX, bodyY + (15 * i));
+		}
+		
+		//draw the button
+		ctx.fillStyle = btnColor;
+		ctx.fillRect(btnX, btnY, btnWidth, btnHeight);
+		
+		// draw the btn text
+		ctx.fillStyle = "White"
+		ctx.font = "30px Consolas";
+		ctx.textAlign = "center";
+		ctx.fillText(this.btnText, btnTextX, btnTextY);
+	};
+	this.clicked = function() {
+        var myleft = btnX;
+        var myright = btnX + btnWidth;
+        var mytop = btnY;
+        var mybottom = btnY + btnHeight;
+        var clicked = true;
+        if ((mybottom < myGameArea.y) || (mytop > myGameArea.y) || (myright < myGameArea.x) || (myleft > myGameArea.x)) {
+            clicked = false;
+        }
+        return clicked;
     }
+
 }
 
 function everyInterval(n) {
@@ -74,6 +178,7 @@ I'm not sure if frameNo and everyInterval are needed.
 function component(width, height, color, x, y, scoreValue, type) {
 	this.type = type;
 	this.scoreValue = scoreValue; // this is returned when a brick is hit and has a value (walls and paddle will be 0)
+	this.color = color;
     this.width = width;
     this.height = height;
     this.speedX = 0;
@@ -82,7 +187,7 @@ function component(width, height, color, x, y, scoreValue, type) {
     this.y = y;
 	this.update = function() {
 		ctx = myGameArea.context;
-		ctx.fillStyle = color;
+		ctx.fillStyle = this.color;
 		if (this.type === "text") {
 			ctx.font = this.width + " " + this.height;
 			ctx.fillText(this.text, this.x, this.y);
@@ -133,68 +238,92 @@ function component(width, height, color, x, y, scoreValue, type) {
     };
 }
 
+function endGame() {
+	//myGameArea.stop();
+	gameOn = false;
+	
+	msgDialog.headerText = "Game Over";
+	msgDialog.bodyText[0] = "your score was:"
+	msgDialog.bodyText[1] = myScoreValue;
+	msgDialog.bodyText[2] = ""
+	msgDialog.bodyText[3] = "Click start to play again"
+	myGameArea.frameNo = 0;
+	myScoreValue = 0;
+	return;
+}
+
 function updateGameArea() {
 	var x, y, sideHit;
 	
-	// out of bounds
-	if ((myGameBall.y + myGameBall.height) > myGameArea.canvas.height) {
-		myGameArea.stop();
-		$("#end_game").fadeIn(500);
-		return;
-	}
-	
-	myGameArea.clear();
-	myGameArea.frameNo++;
-	
-	// set ball movement
-	for (var i = 0; i < myObstacles.length; i++) {
-		sideHit = myGameBall.crashWith(myObstacles[i]);
-		if (sideHit != "miss") {
-			// reset direction/speed here
-			if ((sideHit === "left") || (sideHit === "right")) {
-				myGameBall.speedX = myGameBall.speedX * -1;
-			}
-			
-			if ((sideHit === "top") || (sideHit === "bottom")) {
-				myGameBall.speedY = myGameBall.speedY * -1;
-			}
-			myScoreValue += myObstacles[i].scoreValue;
+	if(gameOn) {
+		// out of bounds
+		if ((myGameBall.y + myGameBall.height) > myGameArea.canvas.height) {
+			endGame();
 		}
-	}
-	myGameBall.newPos();
-	
-	// Set paddle movement
-	myGamePiece.speedX = 0;
-	myGamePiece.speedY = 0;
-	if (myGameArea.x) {
-		if(myGameArea.x > WIDTH - myGamePiece.width) {
-			myGamePiece.x = WIDTH - myGamePiece.width;
-		} else {
-			myGamePiece.x = myGameArea.x;
+		
+		myGameArea.clear();
+		myGameArea.frameNo++;
+		
+		// set ball movement
+		for (var i = 0; i < myObstacles.length; i++) {
+			sideHit = myGameBall.crashWith(myObstacles[i]);
+			if (sideHit != "miss") {
+				// reset direction/speed here
+				if ((sideHit === "left") || (sideHit === "right")) {
+					myGameBall.speedX = myGameBall.speedX * -1;
+				}
+				
+				if ((sideHit === "top") || (sideHit === "bottom")) {
+					myGameBall.speedY = myGameBall.speedY * -1;
+				}
+				myScoreValue += myObstacles[i].scoreValue;
+			}
 		}
-	}
-	if (myGameArea.key && (myGameArea.key === 37 || myGameArea.key === 65)) {	//left (arrow or "a")
-		myGamePiece.speedX = -1; 
-	}
-	if (myGameArea.key && (myGameArea.key === 39 || myGameArea.key === 68)) {	//right (arrow or "d")
-		myGamePiece.speedX = 1; 
-	}
-	myGamePiece.newPos();
-	
-	// Show the Score
-	myScore.text = "SCORE: " + myScoreValue;
-	
-    myScore.update();
-	myGameBall.update();
-	myGamePiece.update();
-	
-	if (SHOW_TEST_DATA) {
-		showTestData_GamePiece.text = "x: " + myGamePiece.x + "\ty: " + myGamePiece.y + "\n" +
-							"speedX:" + myGamePiece.speedX + "\tspeedY: " + myGamePiece.speedY;
-		showTestData_GameBall.text = "x: " + myGameBall.x + "\ty: " + myGameBall.y + "\n" +
-							"speedX:" + myGameBall.speedX + "\tspeedY: " + myGameBall.speedY;
-		showTestData_GamePiece.update();
-		showTestData_GameBall.update();
+		myGameBall.newPos();
+		
+		// Set paddle movement
+		myGamePiece.speedX = 0;
+		myGamePiece.speedY = 0;
+		if (myGameArea.x) {
+			if(myGameArea.x > WIDTH - myGamePiece.width) {
+				myGamePiece.x = WIDTH - myGamePiece.width;
+			} else {
+				myGamePiece.x = myGameArea.x;
+			}
+		}
+		if (myGameArea.key && (myGameArea.key === 37 || myGameArea.key === 65)) {	//left (arrow or "a")
+			myGamePiece.speedX = -1; 
+		}
+		if (myGameArea.key && (myGameArea.key === 39 || myGameArea.key === 68)) {	//right (arrow or "d")
+			myGamePiece.speedX = 1; 
+		}
+		myGamePiece.newPos();
+		
+		// Show the Score
+		myScore.text = "SCORE: " + myScoreValue;
+		
+		myScore.update();
+		myGameBall.update();
+		myGamePiece.update();
+		
+		if (SHOW_TEST_DATA) {
+			showTestData_GamePiece.text = "x: " + myGamePiece.x + "\ty: " + myGamePiece.y + "\n" +
+								"speedX:" + myGamePiece.speedX + "\tspeedY: " + myGamePiece.speedY;
+			showTestData_GameBall.text = "x: " + myGameBall.x + "\ty: " + myGameBall.y + "\n" +
+								"speedX:" + myGameBall.speedX + "\tspeedY: " + myGameBall.speedY;
+			showTestData_GamePiece.update();
+			showTestData_GameBall.update();
+		}
+	} else {
+		if (myGameArea.x && myGameArea.y) {
+			if (msgDialog.clicked) {
+				gameOn = true;
+				myGameArea.clear();
+				startGame();
+			}			
+		}
+		
+		msgDialog.update();
 	}
 }
 
