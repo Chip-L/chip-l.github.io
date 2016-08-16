@@ -7,9 +7,9 @@ BubbleShoot.Game = (function($) {
 	var Game = function() {
 		var curBubble;  	// bubble waiting to be fired
 		var nxtBubble;		// next bubble to fire
-		var board;		// the board
+		var board;			// the board
 		var numBubbles;		// how many bubbles there are to be fired
-		var bubbles = [];	// bubblesd waiting to be popped
+		var bubbles = [];	// bubbles waiting to be popped
 		var MAX_BUBBLES = 70;
 		var POINTS_PER_BUBBLE = 50;
 		var MAX_ROWS = 11;
@@ -43,9 +43,9 @@ BubbleShoot.Game = (function($) {
 			board = new BubbleShoot.Board();
 			bubbles = board.getBubbles();
 			
-			 nxtBubble = getNextBubble();
-			 switchToCurBubble();
-			 nxtBubble = getNextBubble();
+			nxtBubble = getNextBubble();
+			switchToCurBubble();
+			nxtBubble = getNextBubble();
 			
 			if (BubbleShoot.Renderer) {
 				if (!requestAnimationID) {
