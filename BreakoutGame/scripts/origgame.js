@@ -1,4 +1,4 @@
-var SHOW_TEST_DATA = true;
+var SHOW_TEST_DATA = false;
 
 var myGamePiece;
 var myGameBall;
@@ -6,8 +6,8 @@ var myObstacles = [];
 var myScore;
 var myScoreValue = 0;
 var gameOn = false;
-var WIDTH = 640;
-var HEIGHT = 480;
+var WIDTH = 720; 	// small 480, medium 720
+var HEIGHT = 480;	// small 270, medium 480
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
@@ -69,17 +69,22 @@ $(function init() {
 })
 
 function startGame() {
+	myScoreValue = 0;	
+	myObstacles.length = 0;
+	myGameArea.frameNo = 0;
+	
 	myScore = new component("30px", "Consolas", "black", 280, 40, 0, "text");
-    myGamePiece = new component(140, 10, "red", 170, 250, 0, "brick");
+	var myGamePieceWidth = WIDTH * .125;
+    myGamePiece = new component(myGamePieceWidth, 10, "red", ((WIDTH / 2) - (myGamePieceWidth / 2)), (HEIGHT - 20), 0, "brick");
 	
 	myGameBall = new component(10, 10, "blue", 150, 235, 0, "ball");
 	myGameBall.speedX = -1;	// + = right; - = left
 	myGameBall.speedY = -1;	// + = down; - = up
 	
 	myObstacles.push(myGamePiece);
-	myObstacles.push(new component(WIDTH, 1, "black", 0, 0, 100, "brick"));
-	myObstacles.push(new component(1, HEIGHT, "black", 0, 0, 50, "brick"));
-	myObstacles.push(new component(1, HEIGHT, "black", WIDTH, 0, 25, "brick"));
+	myObstacles.push(new component(WIDTH, 1, "black", 0, 0, 100, "brick")); // top
+	myObstacles.push(new component(1, HEIGHT, "black", 0, 0, 50, "brick"));	// left 
+	myObstacles.push(new component(1, HEIGHT, "black", WIDTH, 0, 25, "brick")); // right
 	
 	$("#end_game").fadeOut(500);
 	
@@ -225,13 +230,13 @@ function component(width, height, color, x, y, scoreValue, type) {
             (myRight < otherLeft) ||
             (myLeft > otherRight)) {
            crash = "miss";
-        } else if (myBottom >= otherTop) {
+        } else if (myBottom === otherTop) {
 			crash = "bottom";
-		} else if (myTop <= otherBottom) {
+		} else if (myTop === otherBottom) {
 			crash = "top";
-		} else if (myRight >= otherLeft) {
+		} else if (myRight === otherLeft) {
 			crash = "right";
-		} else if (myLeft <= otherRight) {
+		} else if (myLeft === otherRight) {
            crash = "left";
         }
         return crash;
@@ -247,8 +252,7 @@ function endGame() {
 	msgDialog.bodyText[1] = myScoreValue;
 	msgDialog.bodyText[2] = ""
 	msgDialog.bodyText[3] = "Click start to play again"
-	myGameArea.frameNo = 0;
-	myScoreValue = 0;
+			
 	return;
 }
 
@@ -270,11 +274,49 @@ function updateGameArea() {
 			if (sideHit != "miss") {
 				// reset direction/speed here
 				if ((sideHit === "left") || (sideHit === "right")) {
+					console.log("sideHit: " + sideHit)
+					console.log("Before: myGameArea.frameNo: " + myGameArea.frameNo + 
+							 " | myGameBall.speedX: " + myGameBall.speedX  + 
+							 " | myGameBall.speedY: " + myGameBall.speedY  +
+							 " | myGameBall.x: " + myGameBall.x  +
+							 " | myGameBall.y: " + myGameBall.y  +
+							 " | myObstacles[" + i + "].x: " + myObstacles[i].x  +
+							 " | myObstacles[" + i + "].y: " + myObstacles[i].y 
+							 );
 					myGameBall.speedX = myGameBall.speedX * -1;
+					console.log("After: myGameArea.frameNo: " + myGameArea.frameNo + 
+							 " | myGameBall.speedX: " + myGameBall.speedX  + 
+							 " | myGameBall.speedY: " + myGameBall.speedY  +
+							 " | myGameBall.x: " + myGameBall.x  +
+							 " | myGameBall.y: " + myGameBall.y  +
+							 " | myObstacles[" + i + "].x: " + myObstacles[i].x  +
+							 " | myObstacles[" + i + "].y: " + myObstacles[i].y 
+							 );
 				}
 				
 				if ((sideHit === "top") || (sideHit === "bottom")) {
+					console.log("sideHit: " + sideHit)
+					if (SHOW_TEST_DATA) {
+						console.log("Before: myGameArea.frameNo: " + myGameArea.frameNo + 
+								 " | myGameBall.speedX: " + myGameBall.speedX  + 
+								 " | myGameBall.speedY: " + myGameBall.speedY  +
+								 " | myGameBall.x: " + myGameBall.x  +
+								 " | myGameBall.y: " + myGameBall.y  +
+								 " | myObstacles[" + i + "].x: " + myObstacles[i].x  +
+								 " | myObstacles[" + i + "].y: " + myObstacles[i].y 
+								 );
+					}
 					myGameBall.speedY = myGameBall.speedY * -1;
+					if (SHOW_TEST_DATA) {
+						console.log("After: myGameArea.frameNo: " + myGameArea.frameNo + 
+								 " | myGameBall.speedX: " + myGameBall.speedX  + 
+								 " | myGameBall.speedY: " + myGameBall.speedY  +
+								 " | myGameBall.x: " + myGameBall.x  +
+								 " | myGameBall.y: " + myGameBall.y  +
+								 " | myObstacles[" + i + "].x: " + myObstacles[i].x  +
+								 " | myObstacles[" + i + "].y: " + myObstacles[i].y 
+								 );
+					}
 				}
 				myScoreValue += myObstacles[i].scoreValue;
 			}
