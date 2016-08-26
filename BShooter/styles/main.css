@@ -33,6 +33,13 @@ body {
 	margin-right: 20px;
 }
 
+.btn_sound {
+	float: right;
+	margin-top: 10px;
+	margin-right: 20px;
+	line-height: 60px;
+}
+
 #game {
 	position: absolute;
 	left: 0px;

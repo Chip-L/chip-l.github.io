@@ -19,6 +19,7 @@ BubbleShoot.Game = (function($) {
 		var score = 0;
 		var highScore = 0;
 		var requestAnimationID;
+		var soundOn = true;
 		
 		this.init = function() {
 			if (BubbleShoot.Renderer) {
@@ -31,7 +32,18 @@ BubbleShoot.Game = (function($) {
 			if (window.localStorage && localStorage.getItem("high_score")) {
 				highScore = parseInt(localStorage.getItem("high_score"));
 			};
+			if (window.localStorage && localStorage.getItem("sound_on")) {
+				soundOn = parseInt(localStorage.getItem("sound_on"));
+			};
 			BubbleShoot.ui.drawHighScore(highScore);
+			BubbleShoot.ui.drawSound(soundOn);
+			$(".btn_sound").click("click", soundClick);
+		};
+		
+		// turn the sound on or off
+		var soundClick = function() {
+			soundOn = !soundOn;
+			BubbleShoot.ui.drawSound(soundOn)
 		};
 		
 		// when user clicks "start" from the dialog
@@ -169,7 +181,10 @@ BubbleShoot.Game = (function($) {
 					setTimeout(function() {
 						bubble.setState(BubbleShoot.BubbleState.POPPED);
 					}, 200);
-					BubbleShoot.Sounds.play("sounds/pop.mp3", Math.random() * .5 + .5);
+					if (soundOn) { 
+						BubbleShoot.Sounds.play("sounds/pop.mp3", Math.random() * .5 + .5);
+					};
+					
 				}, delay);
 				board.popBubbleAt(this.getRow(), this.getCol());
 				setTimeout(function() {
@@ -207,6 +222,7 @@ BubbleShoot.Game = (function($) {
 		};
 		
 		var endGame = function(hasWon) {
+			localStorage.setItem("sound_on", soundOn);
 			if (score > highScore) {
 				highScore = score;
 				$("#new_high_score").show();

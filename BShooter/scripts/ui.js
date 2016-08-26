@@ -127,10 +127,22 @@ BubbleShoot.ui = (function($) {
 		drawHighScore: function(highScore) {
 			$("#high_score").text(highScore);
 		},
-		
-		
+				
 		drawLevel: function(level) {
 			$("#level").text(level + 1);
+		},
+		
+		drawSound: function(soundOn) {
+			if (soundOn === NaN) {
+				alert("soundOn = NaN");
+			}
+			if(soundOn) {				
+				$("#btn_sound_on").show();
+				$("#btn_sound_off").hide();
+			} else {
+				$("#btn_sound_on").hide();
+				$("#btn_sound_off").show();				
+			}
 		},
 		
 		endGame: function(hasWon, score) {
