@@ -44,6 +44,7 @@ BubbleShoot.Game = (function($) {
 		var soundClick = function() {
 			soundOn = !soundOn;
 			BubbleShoot.ui.drawSound(soundOn)
+			localStorage.setItem("sound_on", soundOn); // remember preference
 		};
 		
 		// when user clicks "start" from the dialog
@@ -71,6 +72,7 @@ BubbleShoot.Game = (function($) {
 			BubbleShoot.ui.drawScore(score);
 			BubbleShoot.ui.drawLevel(level);
 		};
+		
 		//
 		var switchToCurBubble = function() {
 			curBubble = nxtBubble;
@@ -101,10 +103,7 @@ BubbleShoot.Game = (function($) {
 			});
 			
 			$("#board").append(bubble.getSprite());
-			
-			BubbleShoot.ui.drawBubblesRemaining(numBubbles);
-			numBubbles--;
-			
+						
 			return bubble;
 		};
 		
@@ -115,7 +114,9 @@ BubbleShoot.Game = (function($) {
 			var distance = 1000;
 			var collision = BubbleShoot.CollisionDetector.findIntersection(curBubble, board, angle);
 			
-			if (collision) {
+			numBubbles--; // decrement numBubbles on fire
+			
+			if (collision) { // check for a collision and deal with it
 				var coords = collision.coords;
 				duration = Math.round(duration * collision.distToCollision / distance);
 				board.addBubble(curBubble, coords);
@@ -154,7 +155,8 @@ BubbleShoot.Game = (function($) {
 				};
 			};
 			
-			BubbleShoot.ui.fireBubble(curBubble, coords, duration);
+			BubbleShoot.ui.fireBubble(curBubble, coords, duration); // animate firing the bubble
+			BubbleShoot.ui.drawBubblesRemaining(numBubbles);		// update the number of bubbles left to fire
 			
 			// check end game
 			if (board.getRows().length > MAX_ROWS) {
@@ -165,7 +167,7 @@ BubbleShoot.Game = (function($) {
 				endGame(true);
 			} else {
 				switchToCurBubble();
-				if (numBubbles >= 1) {
+				if (numBubbles > 1) {
 					nxtBubble = getNextBubble();
 				};
 			};
@@ -222,7 +224,6 @@ BubbleShoot.Game = (function($) {
 		};
 		
 		var endGame = function(hasWon) {
-			localStorage.setItem("sound_on", soundOn);
 			if (score > highScore) {
 				highScore = score;
 				$("#new_high_score").show();
