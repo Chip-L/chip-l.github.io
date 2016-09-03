@@ -156,7 +156,6 @@ BubbleShoot.Game = (function($) {
 			};
 			
 			BubbleShoot.ui.fireBubble(curBubble, coords, duration); // animate firing the bubble
-			BubbleShoot.ui.drawBubblesRemaining(numBubbles);		// update the number of bubbles left to fire
 			
 			// check end game
 			if (board.getRows().length > MAX_ROWS) {
@@ -221,6 +220,7 @@ BubbleShoot.Game = (function($) {
 			});
 			BubbleShoot.Renderer.render(bubbles);
 			requestAnimationID = requestAnimationFrame(renderFrame);
+			BubbleShoot.ui.drawBubblesRemaining(numBubbles);		// update the number of bubbles left to fire
 		};
 		
 		var endGame = function(hasWon) {
