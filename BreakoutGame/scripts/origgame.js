@@ -6,8 +6,8 @@ var myObstacles = [];
 var myScore;
 var myScoreValue = 0;
 var gameOn = false;
-var WIDTH = 720; 	// small 480, medium 720
-var HEIGHT = 480;	// small 270, medium 480
+var WIDTH = 480; 	// small 480, medium 720
+var HEIGHT = 270;	// small 270, medium 480
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
@@ -81,13 +81,24 @@ function startGame() {
 	myGameBall.speedX = -1;	// + = right; - = left
 	myGameBall.speedY = -1;	// + = down; - = up
 	
-	myObstacles.push(myGamePiece);
+/*	myObstacles.push(myGamePiece);
 	myObstacles.push(new component(WIDTH, 1, "black", 0, 0, 100, "brick")); // top
 	myObstacles.push(new component(1, HEIGHT, "black", 0, 0, 50, "brick"));	// left 
 	myObstacles.push(new component(1, HEIGHT, "black", WIDTH, 0, 25, "brick")); // right
+*/
+	var brickWidth = WIDTH / 11; // 1/2 brick border around them all;
+	var brickHeight = 20;	//HEIGHT / 
+	var brickOffset = brickWidth / 2;
 	
-	$("#end_game").fadeOut(500);
-	
+	for (var row = 0; row < 3; row++) {
+		for (var col = 0; col < 10; col++) {
+			myObstacles[row][col] = {
+				state : 1,
+				brick : new component(brickWidth -2, brickHeight - 2, "green", brickOffset + (brickWidth * col), brickHeight * (row + 1), 0 , "brick")
+			};
+		};
+	}
+		
 	if (SHOW_TEST_DATA) {
 		showTestData_GamePiece = new component("15px", "Ariel", "black", 360, 180, 0, "text");		
 		showTestData_GameBall = new component("15px", "Ariel", "black", 360, 200, 0, "text");
@@ -256,6 +267,22 @@ function endGame() {
 	return;
 }
 
+function getShotAngle() {
+	var ballCenterX = myGameBall.x + (myGameBall.width / 2);
+	var ballCenterY = myGameBall.y + (myGameBall.width / 2);
+	
+	var deltaX = myGameArea.x - ballCenterX;
+	var deltaY = myGameArea.y - ballCenterY;
+	
+	var angle = Math.atan(deltaX / deltaY);
+	if (myGameArea.y > ballCenterY) { // no firing downwards
+		angle += Math.PI;
+	}
+	return angle;
+}
+
+
+
 function updateGameArea() {
 	var x, y, sideHit;
 	
@@ -274,49 +301,11 @@ function updateGameArea() {
 			if (sideHit != "miss") {
 				// reset direction/speed here
 				if ((sideHit === "left") || (sideHit === "right")) {
-					console.log("sideHit: " + sideHit)
-					console.log("Before: myGameArea.frameNo: " + myGameArea.frameNo + 
-							 " | myGameBall.speedX: " + myGameBall.speedX  + 
-							 " | myGameBall.speedY: " + myGameBall.speedY  +
-							 " | myGameBall.x: " + myGameBall.x  +
-							 " | myGameBall.y: " + myGameBall.y  +
-							 " | myObstacles[" + i + "].x: " + myObstacles[i].x  +
-							 " | myObstacles[" + i + "].y: " + myObstacles[i].y 
-							 );
 					myGameBall.speedX = myGameBall.speedX * -1;
-					console.log("After: myGameArea.frameNo: " + myGameArea.frameNo + 
-							 " | myGameBall.speedX: " + myGameBall.speedX  + 
-							 " | myGameBall.speedY: " + myGameBall.speedY  +
-							 " | myGameBall.x: " + myGameBall.x  +
-							 " | myGameBall.y: " + myGameBall.y  +
-							 " | myObstacles[" + i + "].x: " + myObstacles[i].x  +
-							 " | myObstacles[" + i + "].y: " + myObstacles[i].y 
-							 );
 				}
 				
 				if ((sideHit === "top") || (sideHit === "bottom")) {
-					console.log("sideHit: " + sideHit)
-					if (SHOW_TEST_DATA) {
-						console.log("Before: myGameArea.frameNo: " + myGameArea.frameNo + 
-								 " | myGameBall.speedX: " + myGameBall.speedX  + 
-								 " | myGameBall.speedY: " + myGameBall.speedY  +
-								 " | myGameBall.x: " + myGameBall.x  +
-								 " | myGameBall.y: " + myGameBall.y  +
-								 " | myObstacles[" + i + "].x: " + myObstacles[i].x  +
-								 " | myObstacles[" + i + "].y: " + myObstacles[i].y 
-								 );
-					}
 					myGameBall.speedY = myGameBall.speedY * -1;
-					if (SHOW_TEST_DATA) {
-						console.log("After: myGameArea.frameNo: " + myGameArea.frameNo + 
-								 " | myGameBall.speedX: " + myGameBall.speedX  + 
-								 " | myGameBall.speedY: " + myGameBall.speedY  +
-								 " | myGameBall.x: " + myGameBall.x  +
-								 " | myGameBall.y: " + myGameBall.y  +
-								 " | myObstacles[" + i + "].x: " + myObstacles[i].x  +
-								 " | myObstacles[" + i + "].y: " + myObstacles[i].y 
-								 );
-					}
 				}
 				myScoreValue += myObstacles[i].scoreValue;
 			}
@@ -344,6 +333,7 @@ function updateGameArea() {
 		// Show the Score
 		myScore.text = "SCORE: " + myScoreValue;
 		
+		myObstacles.length;
 		myScore.update();
 		myGameBall.update();
 		myGamePiece.update();
@@ -369,3 +359,12 @@ function updateGameArea() {
 	}
 }
 
+
+/* 
+launch - change the ball to sit on the paddle at the start and move with the paddle (if speed = 0, follow paddle movement (x only)). then when the user clicks, launch the ball as normal. (future - have cursor change to a crosshair and control the direction and speed of the first bounce?)
+
+Bounce - get a more sophisticated bounce. Use the normal and friction (friction on the paddle and should vary across the paddle's width)
+
+Bricks - do double array of bricks
+Special bricks with blasters, wider paddle, smaller paddle, solid ball, etc.
+*/

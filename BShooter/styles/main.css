@@ -124,6 +124,7 @@ body {
 	color: #000;
 	text-align: center;
 }
+
 .button {
 	transition: background-color .3s ease-in-out, transform .2s ease-in-out;
 	-moz-transition: background-color .3s ease-in-out, -moz-transform .2s ease-in-out;
