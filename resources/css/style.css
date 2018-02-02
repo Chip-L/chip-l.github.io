@@ -1,0 +1,35 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 1rem;
+}
+
+a.title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+
+
+.panel-body p:last-child {
+  margin-bottom: 0;
+}
+
+.panel-group {
+  margin: 1.5rem 0;
+}
+
+/* Icon when the collapsible content is shown */
+.panel-title a h3:after {
+  float: right;
+  font-family: "Glyphicons Halflings";
+  content: "\e114";
+}
+
+/* Icon when the collapsible content is hidden */
+.panel-title a.collapsed h3:after {
+  content: "\e080";
+}
