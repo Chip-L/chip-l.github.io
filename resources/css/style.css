@@ -6,13 +6,19 @@ body {
   font-size: 1rem;
 }
 
+h2 {
+  font-size: 1.5rem;
+}
+
 a.title {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-style: italic;
 }
 
-
+ h2.panel-title {
+  font-size: 1.5rem;
+}
 
 .panel-body p:last-child {
   margin-bottom: 0;
@@ -22,14 +28,19 @@ a.title {
   margin: 1.5rem 0;
 }
 
-/* Icon when the collapsible content is shown */
-.panel-title a h3:after {
-  float: right;
-  font-family: "Glyphicons Halflings";
-  content: "\e114";
+a,
+a:active,
+a:hover,
+a:focus,
+a:visited {
+  text-decoration: none;
+  outline: none;
 }
 
-/* Icon when the collapsible content is hidden */
-.panel-title a.collapsed h3:after {
-  content: "\e080";
+a .fa-chevron-down {
+  transition: .3s transform ease-in-out;
+}
+
+a[aria-expanded=false] .fa-chevron-down {
+transform: rotate(-90deg);
 }
