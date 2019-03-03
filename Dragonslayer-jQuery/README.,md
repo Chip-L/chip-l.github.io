@@ -1,0 +1,19 @@
+This is a game. The character has stats and skills and wanders through a dungeon
+of random encounters. This may morph in to a real RPG using a hodgepodge of
+Advanced D&D and D&D 3E rules.
+
+The screen is divided in to a couple of parts. (Switch to GRID)
+* The character on the left
+* the story on the right top 2/3
+* The actions under the story
+
+There will be an expansion on the character that will open a new window with
+Stats, Skills, and Equipment tabs.
+
+The story will be run off of a map. Unfortunately the map will have to be
+pre-generated and a fixed size. However, this will allow custom maps for a set
+adventure.
+
+The character will run in to monsters in encounters. These will be stored in a
+table and selected at random. (they may also be placed on the map - whichever
+makes more sense.)
