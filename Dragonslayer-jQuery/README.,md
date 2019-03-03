@@ -2,9 +2,10 @@ This is a game. The character has stats and skills and wanders through a dungeon
 of random encounters. This may morph in to a real RPG using a hodgepodge of
 Advanced D&D and D&D 3E rules.
 
-The screen is divided in to a couple of parts. (Switch to GRID)
+The screen is divided in to a couple of parts. (Switch from bootstrap to GRID)
 * The character on the left
-* the story on the right top 2/3
+* the story on the right top 2/3 (possibly have artwork here aka Sierra's "Eye
+    of the Beholder" formats)
 * The actions under the story
 
 There will be an expansion on the character that will open a new window with
