@@ -44,3 +44,12 @@ a .fa-chevron-down {
 a[aria-expanded=false] .fa-chevron-down {
 transform: rotate(-90deg);
 }
+
+#collapse3 li {
+  margin: 10px auto;
+}
+
+h3 {
+  font-size: 1.25 rem;
+  font-weight: bold;
+}
