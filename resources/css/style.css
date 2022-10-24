@@ -5,6 +5,7 @@
 body {
   background-color: #f2f4f4;
   font-size: 16px;
+  padding-bottom: 2.5rem;
 }
 
 h2 {
@@ -45,13 +46,6 @@ a:visited {
 .expandable:hover .title {
   font-size: 1.5rem;
 }
-
-/* .expandable {
-  transition: 0.3s transform ease-in-out;
-} */
-/* a.hover .expandable:hover .trail {
-  transform: scale(1.1);
-} */
 
 a .fa-chevron-down {
   transition: 0.3s transform ease-in-out;
@@ -99,6 +93,7 @@ footer {
   padding: 0.75rem;
   background: paleturquoise;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 footer .item {
   display: inline-block;
@@ -116,4 +111,16 @@ footer .item {
   font-style: italic;
   padding: 0.5rem 1rem;
   margin: 0.25rem;
+}
+
+@media screen and (max-width: 770px) {
+  body {
+    padding-bottom: 4.25rem;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  body {
+    padding-bottom: 7.5rem;
+  }
 }
