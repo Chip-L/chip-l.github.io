@@ -1,159 +1,294 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Chip-L GitHub</title>
 
     <!-- font awesome provides icons (http://fontawesome.io/icons/) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- bootstrap -->
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-      crossorigin="anonymous">
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
 
     <!-- Main CSS file -->
-  	<link rel="stylesheet" href="./resources/css/style.css">
-
+    <link rel="stylesheet" href="./resources/css/style.css" />
   </head>
 
   <body>
     <!-- header -->
-    <!-- <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse">
       <div class="container">
         <div class="navbar-header">
           <p class="navbar-brand">Chip-L GitHub.io</p>
         </div>
       </div>
-    </nav> -->
+    </nav>
 
     <!-- main -->
-    <div class="container">
+    <main class="container">
       <div class="jumbotron">
         <h1>Hello, friends!</h1>
 
-        <p>This is my test server so that I can learn about webpages. Maybe someday I will actually publish one!</p>
-
-        <!-- Sites I'm working on: Collapsible section -->
-        <div class="panel-group">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h2 class="panel-title">
-                <a data-toggle="collapse" href="#collapse1" aria-expanded = 'true'>
-                  Sites I'm working on:
-                  <i class="fa fa-chevron-down pull-right"></i>
-                </a>
-              </h2>
-            </div>
-            <!-- collapsible portion -->
-            <div id="collapse1" class="panel-collapse collapse in">
-              <div class="panel-body">
-                <ul>
-                  <li><a href="Dslayer-ngJS/ds-index.html" class="title">AngularJS-Dragonslayer!</a> - a story telling program written using AngularJS</li>
-                  <li><a href="Dragonslayer-jQuery/index.html" class="title">jQuery-Dragonslayer!</a> - a story telling program written using jQuery</li>
-                  <li><a href="BShooter/index.html" class="title">Bubble Shooter Game</a> - from the book <i>Build an HTML5 Game</i> by Karl Bunyan</li>
-                  <li><a href="Breakout/index.html" class="title">Breakout Game</a> - from <a href="http://www.w3schools.com/games/default.asp">w3schools game tutorial</a></li>
-                  <li><a href="TaskManager/index.html" class="title">Task Manager</a> - from <a href="http://angularcode.com/simple-task-manager-application-using-angularjs-php-mysql/">http://angularcode.com/simple-task-manager-application-using-angularjs-php-mysql/</a> to test out sql</li>
-                  <li><a href="https://chip-l.github.io/MadLibs/" class="title">Mad Libs</a> - a program to create and enter MadLibs</li>
-                  <li><a href="https://chip-l.github.io/Match_Game/" class="title">Match Game</a> - This started out as a Codecademy project. However, I have reworked it and changed it to not use bootstrap, that I claim it as mine now. Very little of this is recognizable as Codecademy's (colors are about it)</li>
-                  <li><a href="https://chip-l.github.io/Battleship_Game/" class="title">Battleship</a> - a game using primarily css to display everything</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Codecademy projects Collapsible section -->
-        <div class="panel-group">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h2 class="panel-title">
-                <a data-toggle="collapse" href="#collapse2" aria-expanded = 'false'>
-                  Sites created for Codecademy projects
-                  <i class="fa fa-chevron-down pull-right"></i>
-                </a>
-              </h2>
-            </div>
-            <!-- collapsible portion -->
-            <div id="collapse2" class="panel-collapse collapse" aria-expanded = 'false'>
-              <div class="panel-body">
-                <ul>
-                  <li><a href="https://chip-l.github.io/prj-rev-bwfs-dasmoto/DasmotosArtsCrafts/" class="title">Dasmoto's Arts &amp; Crafts</a></li>
-                  <li><a href="https://chip-l.github.io/excursion/" class="title">Excursion</a></li>
-                  <li><a href="https://chip-l.github.io/Broadway/" class="title">Broadway Design</a></li>
-                  <li><a href="https://chip-l.github.io/MyTimes/" class="title">My Times</a></li>
-                  <li><a href="https://chip-l.github.io/TeaCozy/" class="title">Tea Cozy</a></li>
-                  <li><a href="https://chip-l.github.io/SecretAgentSupply/" class="title">Secret Agent Supply Inc.</a></li>
-                  <li><a href="https://chip-l.github.io/ColmarAcademy/" class="title">Colmar Academy</a> * - Capstone project for Codecademy</li>
-                  <li><a href="https://chip-l.github.io/JumpStart/" class="title">Jumpstart</a> * - a page using a carousel plugin</li>
-                  <li><a href="https://chip-l.github.io/trackster/" class="title">Trackster</a> * - a music lookup site using APIs</li>
-                  <li><a href="https://chip-l.github.io/LiteBright/" class="title">Light-Bright</a> - a light-brite site that can make pictures</li>
-                  <li><a href="https://chip-l.github.io/Ravenous/" class="title">Ravenous</a> - a React website</li>
-                </ul>
-                * These (and Match Game) are pretty much done on my own with very little coaching from Codecademy
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Tidbits Collapsible section -->
-        <div class="panel-group">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h2 class="panel-title">
-                <a data-toggle="collapse" href="#collapse3" aria-expanded = 'false'>
-                  Other useful tidbits
-                  <i class="fa fa-chevron-down pull-right"></i>
-                </a>
-              </h2>
-            </div>
-            <!-- collapsible portion -->
-            <div id="collapse3" class="panel-collapse collapse" aria-expanded = 'false'>
-              <div class="panel-body">
-                <ul style="list-style-type:none">
-                  <li><h3>Certified SAFe&reg; 4 Agilist</h3></li>
-                  <li>
-                    <img src="./resources/images/cert_mark_SA_large_300px.png" alt="Certified SAFe&reg; 4 Agilist">
-                    <figcaption>July 2019</figcaption>
-                  </li>
-                  <li><h3>Codecademy-Build Websites from Scratch calendar</h3></li>
-                  <li>
-                    <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/11199615" alt="Codecademy Build Websites from Scratch certificate">
-                    <figcaption>January 2018</figcaption>
-                  </li>
-                  <li><a href="./resources/Setting up a GitHub repository and using Atom to manage it.pdf">Setting up a GitHub repository and using Atom to manage it</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="https://github.com/Chip-L/chip-l.github.io">https://github.com/Chip-L/chip-l.github.io</a>
+        <p>
+          This is my test server so that I can learn about webpages. Maybe
+          someday I will actually publish one!
+        </p>
       </div>
 
-      <!-- closed
-        <a href="https://portal.azure.com/">https://portal.azure.com/</a> (chip_long@outlook.com)
-      -->
-    </div>
-    <!-- <footer>
-    </footer> -->
+      <!-- Sites I'm working on: Collapsible section -->
+      <div class="collapse-group">
+        <h2>
+          <a
+            data-bs-toggle="collapse"
+            href="#collapseMySites"
+            role="button"
+            aria-expanded="true"
+            aria-controls="collapseMySites"
+          >
+            Sites I'm working on:
+            <i class="fa fa-chevron-down pull-right"></i>
+          </a>
+        </h2>
+        <!-- collapsible portion -->
+        <div id="collapseMySites" class="collapse show">
+          <ul>
+            <li>
+              <a href="Dslayer-ngJS/ds-index.html" class="title"
+                >AngularJS-Dragonslayer!</a
+              >
+              - a story telling program written using AngularJS
+            </li>
+            <li>
+              <a href="Dragonslayer-jQuery/index.html" class="title"
+                >jQuery-Dragonslayer!</a
+              >
+              - a story telling program written using jQuery
+            </li>
+            <li>
+              <a href="BShooter/index.html" class="title"
+                >Bubble Shooter Game</a
+              >
+              - from the book <i>Build an HTML5 Game</i> by Karl Bunyan
+            </li>
+            <li>
+              <a href="Breakout/index.html" class="title">Breakout Game</a>
+              - from
+              <a href="http://www.w3schools.com/games/default.asp"
+                >w3schools game tutorial</a
+              >
+            </li>
+            <li>
+              <a href="TaskManager/index.html" class="title">Task Manager</a>
+              - from
+              <a
+                href="http://angularcode.com/simple-task-manager-application-using-angularjs-php-mysql/"
+                >http://angularcode.com/simple-task-manager-application-using-angularjs-php-mysql/</a
+              >
+              to test out sql
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/MadLibs/" class="title"
+                >Mad Libs</a
+              >
+              - a program to create and enter MadLibs
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/Match_Game/" class="title"
+                >Match Game</a
+              >
+              - This started out as a Codecademy project. However, I have
+              reworked it and changed it to not use bootstrap, that I claim it
+              as mine now. Very little of this is recognizable as Codecademy's
+              (colors are about it)
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/Battleship_Game/" class="title"
+                >Battleship</a
+              >
+              - a game using primarily css to display everything
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Coding bootcamp projects -->
+      <div class="collapse-group">
+        <h2>
+          <a
+            data-bs-toggle="collapse"
+            href="#collapseBootCamp"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseBootCamp"
+          >
+            Sites created while in DU Coding bootcamp
+            <i class="fa fa-chevron-down pull-right"></i>
+          </a>
+        </h2>
+        <div class="collapse" id="collapseBootCamp">
+          <ul>
+            Some placeholder content for the collapse component. This panel is
+            hidden by default but revealed when the user activates the relevant
+            trigger.
+          </ul>
+        </div>
+      </div>
+
+      <!-- Codecademy projects Collapsible section -->
+      <div class="collapse-group">
+        <h2>
+          <a
+            data-bs-toggle="collapse"
+            href="#collapseCodecademy"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseCodecademy"
+          >
+            Sites created for Codecademy projects
+            <i class="fa fa-chevron-down pull-right"></i>
+          </a>
+        </h2>
+        <!-- collapsible portion -->
+        <div id="collapseCodecademy" class="collapse">
+          <ul>
+            <li>
+              <a
+                href="https://chip-l.github.io/prj-rev-bwfs-dasmoto/DasmotosArtsCrafts/"
+                class="title"
+                >Dasmoto's Arts &amp; Crafts</a
+              >
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/excursion/" class="title"
+                >Excursion</a
+              >
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/Broadway/" class="title"
+                >Broadway Design</a
+              >
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/MyTimes/" class="title"
+                >My Times</a
+              >
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/TeaCozy/" class="title"
+                >Tea Cozy</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://chip-l.github.io/SecretAgentSupply/"
+                class="title"
+                >Secret Agent Supply Inc.</a
+              >
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/ColmarAcademy/" class="title"
+                >Colmar Academy</a
+              >
+              * - Capstone project for Codecademy
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/JumpStart/" class="title"
+                >Jumpstart</a
+              >
+              * - a page using a carousel plugin
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/trackster/" class="title"
+                >Trackster</a
+              >
+              * - a music lookup site using APIs
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/LiteBright/" class="title"
+                >Light-Bright</a
+              >
+              - a light-brite site that can make pictures
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/Ravenous/" class="title"
+                >Ravenous</a
+              >
+              - a React website
+            </li>
+          </ul>
+          * These (and Match Game) are pretty much done on my own with very
+          little coaching from Codecademy
+        </div>
+      </div>
+
+      <!-- Tidbits Collapsible section -->
+      <div class="collapse-group">
+        <h2>
+          <a
+            data-bs-toggle="collapse"
+            href="#collapseTidBits"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseTidBits"
+          >
+            Other useful tidbits
+            <i class="fa fa-chevron-down pull-right"></i>
+          </a>
+        </h2>
+        <!-- collapsible portion -->
+        <div id="collapseTidBits" class="collapse awards">
+          <div>
+            <h3>Certified SAFe&reg; 4 Agilist</h3>
+            <img
+              src="./resources/images/cert_mark_SA_large_300px.png"
+              alt="Certified SAFe&reg; 4 Agilist"
+            />
+            <figcaption>July 2019</figcaption>
+          </div>
+          <div>
+            <h3>Codecademy-Build Websites from Scratch calendar</h3>
+            <img
+              src="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/11199615"
+              alt="Codecademy Build Websites from Scratch certificate"
+            />
+            <figcaption>January 2018</figcaption>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://github.com/Chip-L/chip-l.github.io"
+        >https://github.com/Chip-L/chip-l.github.io</a
+      >
+    </main>
+
+    <footer class="fixed-bottom">
+      <a href="https://github.com/Chip-L/chip-l.github.io"
+        >https://github.com/Chip-L/chip-l.github.io</a
+      >
+    </footer>
 
     <!-- JQuery -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous">
-    </script>
+      crossorigin="anonymous"
+    ></script>
     <!-- bootstrap code: Latest compiled and minified JavaScript -->
     <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous">
-    </script>
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
