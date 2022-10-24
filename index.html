@@ -27,101 +27,25 @@
 
   <body>
     <!-- header -->
-    <nav class="navbar navbar-inverse">
+    <header class="d-flex">
+      <h1>Chip-L GitHub.io</h1>
+    </header>
+
+    <div class="jumbotron container-fluid">
       <div class="container">
-        <div class="navbar-header">
-          <p class="navbar-brand">Chip-L GitHub.io</p>
-        </div>
+        <h1>Hello, friends!</h1>
+        <p>
+          This is my test server so that I can learn about webpages. This is not
+          my official portfolio site. Please visit it here:
+          <a href="https://chip-l.github.io/Portfolio/"
+            >https://chip-l.github.io/Portfolio/</a
+          >
+        </p>
       </div>
-    </nav>
+    </div>
 
     <!-- main -->
     <main class="container">
-      <div class="jumbotron">
-        <h1>Hello, friends!</h1>
-
-        <p>
-          This is my test server so that I can learn about webpages. Maybe
-          someday I will actually publish one!
-        </p>
-      </div>
-
-      <!-- Sites I'm working on: Collapsible section -->
-      <div class="collapse-group">
-        <h2>
-          <a
-            data-bs-toggle="collapse"
-            href="#collapseMySites"
-            role="button"
-            aria-expanded="true"
-            aria-controls="collapseMySites"
-          >
-            Sites I'm working on:
-            <i class="fa fa-chevron-down pull-right"></i>
-          </a>
-        </h2>
-        <!-- collapsible portion -->
-        <div id="collapseMySites" class="collapse show">
-          <ul>
-            <li>
-              <a href="Dslayer-ngJS/ds-index.html" class="title"
-                >AngularJS-Dragonslayer!</a
-              >
-              - a story telling program written using AngularJS
-            </li>
-            <li>
-              <a href="Dragonslayer-jQuery/index.html" class="title"
-                >jQuery-Dragonslayer!</a
-              >
-              - a story telling program written using jQuery
-            </li>
-            <li>
-              <a href="BShooter/index.html" class="title"
-                >Bubble Shooter Game</a
-              >
-              - from the book <i>Build an HTML5 Game</i> by Karl Bunyan
-            </li>
-            <li>
-              <a href="Breakout/index.html" class="title">Breakout Game</a>
-              - from
-              <a href="http://www.w3schools.com/games/default.asp"
-                >w3schools game tutorial</a
-              >
-            </li>
-            <li>
-              <a href="TaskManager/index.html" class="title">Task Manager</a>
-              - from
-              <a
-                href="http://angularcode.com/simple-task-manager-application-using-angularjs-php-mysql/"
-                >http://angularcode.com/simple-task-manager-application-using-angularjs-php-mysql/</a
-              >
-              to test out sql
-            </li>
-            <li>
-              <a href="https://chip-l.github.io/MadLibs/" class="title"
-                >Mad Libs</a
-              >
-              - a program to create and enter MadLibs
-            </li>
-            <li>
-              <a href="https://chip-l.github.io/Match_Game/" class="title"
-                >Match Game</a
-              >
-              - This started out as a Codecademy project. However, I have
-              reworked it and changed it to not use bootstrap, that I claim it
-              as mine now. Very little of this is recognizable as Codecademy's
-              (colors are about it)
-            </li>
-            <li>
-              <a href="https://chip-l.github.io/Battleship_Game/" class="title"
-                >Battleship</a
-              >
-              - a game using primarily css to display everything
-            </li>
-          </ul>
-        </div>
-      </div>
-
       <!-- Coding bootcamp projects -->
       <div class="collapse-group">
         <h2>
@@ -232,22 +156,102 @@
         </div>
       </div>
 
+      <!-- Some of my first sites -->
+      <div class="collapse-group">
+        <h2>
+          <a
+            data-bs-toggle="collapse"
+            href="#collapseFirst"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseFirst"
+          >
+            Some of my first sites:
+            <i class="fa fa-chevron-down pull-right"></i>
+          </a>
+        </h2>
+        <div id="collapseFirst" class="collapse">
+          <div class="info">
+            These are some of the first sites I worked on. They were done before
+            I attended the coding bootcamp. Some of them grew out of other
+            projects but most were based on tutorials.
+          </div>
+          <ul>
+            <li>
+              <a href="Dslayer-ngJS/ds-index.html" class="title"
+                >AngularJS-Dragonslayer!</a
+              >
+              - a story telling program written using AngularJS
+            </li>
+            <li>
+              <a href="Dragonslayer-jQuery/index.html" class="title"
+                >jQuery-Dragonslayer!</a
+              >
+              - a story telling program written using jQuery
+            </li>
+            <li>
+              <a href="BShooter/index.html" class="title"
+                >Bubble Shooter Game</a
+              >
+              - from the book <i>Build an HTML5 Game</i> by Karl Bunyan
+            </li>
+            <li>
+              <a href="Breakout/index.html" class="title">Breakout Game</a>
+              - from
+              <a href="http://www.w3schools.com/games/default.asp"
+                >w3schools game tutorial</a
+              >
+            </li>
+            <li>
+              <a href="TaskManager/index.html" class="title">Task Manager</a>
+              - from
+              <a
+                href="http://angularcode.com/simple-task-manager-application-using-angularjs-php-mysql/"
+                >http://angularcode.com/simple-task-manager-application-using-angularjs-php-mysql/</a
+              >
+              to test out sql
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/MadLibs/" class="title"
+                >Mad Libs</a
+              >
+              - a program to create and enter MadLibs
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/Match_Game/" class="title"
+                >Match Game</a
+              >
+              - This started out as a Codecademy project. However, I have
+              reworked it and changed it to not use bootstrap, that I claim it
+              as mine now. Very little of this is recognizable as Codecademy's
+              (colors are about it)
+            </li>
+            <li>
+              <a href="https://chip-l.github.io/Battleship_Game/" class="title"
+                >Battleship</a
+              >
+              - a game using primarily css to display everything
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <!-- Tidbits Collapsible section -->
       <div class="collapse-group">
         <h2>
           <a
             data-bs-toggle="collapse"
-            href="#collapseTidBits"
+            href="#collapseAwards"
             role="button"
             aria-expanded="false"
-            aria-controls="collapseTidBits"
+            aria-controls="collapseAwards"
           >
             Other useful tidbits
             <i class="fa fa-chevron-down pull-right"></i>
           </a>
         </h2>
         <!-- collapsible portion -->
-        <div id="collapseTidBits" class="collapse awards">
+        <div id="collapseAwards" class="collapse awards">
           <div>
             <h3>Certified SAFe&reg; 4 Agilist</h3>
             <img
@@ -273,9 +277,16 @@
     </main>
 
     <footer class="fixed-bottom">
-      <a href="https://github.com/Chip-L/chip-l.github.io"
-        >https://github.com/Chip-L/chip-l.github.io</a
-      >
+      <div class="item">
+        <span class="label">GitHub account:</span>
+        <a href="https://github.com/Chip-L/"> https://github.com/Chip-L/ </a>
+      </div>
+      <div class="item">
+        <span class="label">Official Portfolio:</span>
+        <a href="https://github.com/Chip-L/chip-l.github.io">
+          https://chip-l.github.io/Portfolio/
+        </a>
+      </div>
     </footer>
 
     <!-- JQuery -->
